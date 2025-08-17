@@ -4,6 +4,11 @@ import AlbumCard from './components/AlbumCard';
 import AlbumModal from './components/AlbumModal';
 import './App.css';
 
+/**
+ * Main application component that fetches and displays a list of albums from the Deezer API.
+ * It includes a search bar with a debounce feature and a modal for viewing album details.
+ * @component
+ */
 function App() {
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,37 +17,42 @@ function App() {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const searchInputRef = useRef(null);
 
-  // Estados para el modal
+  // States for the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState(null);
 
-  // Efecto para implementar el debounce en el término de búsqueda
+  /**
+   * Effect hook to debounce the search term.
+   * Delays updating `debouncedSearchTerm` until `searchTerm` has not changed for 500ms.
+   * This prevents excessive API calls while the user is typing.
+   */
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
-    }, 500); // 500ms de retraso
+    }, 500);
 
     return () => {
       clearTimeout(handler);
     };
   }, [searchTerm]);
 
-  // Efecto para cargar álbumes basado en el término de búsqueda con debounce
+  /**
+   * Effect hook to fetch albums from the Deezer API based on the debounced search term.
+   * It handles loading states and potential errors.
+   */
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
         setLoading(true);
-        // Usar la URL completa de la API de Deezer para evitar errores de URL inválida
         const response = await axios.get(
         `/deezer-api/search/album?q=${encodeURIComponent(
           debouncedSearchTerm
         )}`
       );
-        // Limita los álbumes a un máximo de 20
         setAlbums(response.data.data.slice(0, 20));
       } catch (err) {
         console.error("Error fetching data from Deezer API:", err);
-        setError("No se pudieron cargar los álbumes. Intenta de nuevo más tarde.");
+        setError("Could not load albums. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -56,31 +66,43 @@ function App() {
     }
   }, [debouncedSearchTerm]);
 
-  // Efecto para enfocar el input después de que la carga haya terminado
+  /**
+   * Effect hook to set focus on the search input field after data has finished loading.
+   */
   useEffect(() => {
     if (!loading && searchInputRef.current) {
       searchInputRef.current.focus();
     }
   }, [loading]);
 
+  /**
+   * Handles the change event of the search input field.
+   * Updates the `searchTerm` state.
+   * @param {Object} event - The change event object.
+   */
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  // Función para abrir el modal
+  /**
+   * Opens the album modal and sets the selected album.
+   * @param {Object} album - The album object to display in the modal.
+   */
   const handleAlbumClick = (album) => {
     setSelectedAlbum(album);
     setIsModalOpen(true);
   };
 
-  // Función para cerrar el modal
+  /**
+   * Closes the album modal and clears the selected album state.
+   */
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedAlbum(null);
   };
 
   if (loading && debouncedSearchTerm) {
-    return <div className="loading">Cargando álbumes...</div>;
+    return <div className="loading">Loading albums...</div>;
   }
 
   if (error) {
@@ -90,12 +112,12 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1 className="main-title">Reproductor Musical</h1>
+        <h1 className="main-title">Music Player</h1>
         <div className="search-container">
           <input
             ref={searchInputRef}
             type="text"
-            placeholder="Buscar álbumes..."
+            placeholder="Search for albums..."
             value={searchTerm}
             onChange={handleSearchChange}
             className="search-input"
@@ -112,7 +134,7 @@ function App() {
             />
           ))
         ) : (
-          <div className="no-results">No se encontraron álbumes.</div>
+          <div className="no-results">No albums found.</div>
         )}
       </div>
 

@@ -1,12 +1,77 @@
-# React + Vite
+📂 Project Structure
+The project structure follows a standard convention for a modern React application built with Vite, ensuring a clear and organized development workflow.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+.
+├── src/
+│   ├── components/
+│   │   ├── AlbumCard.jsx
+│   │   ├── AlbumCard.css
+│   │   ├── AlbumModal.jsx
+│   │   └── AlbumModal.css
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── index.html
+├── package.json
+├── vite.config.js  # Included if you have a proxy configured
+└── README.md
+src/: This directory contains all the source code for your application.
 
-Currently, two official plugins are available:
+src/components/: A folder for your reusable React components. Each component has its own JSX file and a corresponding CSS file for easy maintenance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+App.jsx: The main application component that manages the search logic and overall application state.
 
-## Expanding the ESLint configuration
+App.css: Contains the global styles for the app, including the media queries for the responsive layout.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+index.css: The base stylesheet, typically used for universal rules like font families and body margins.
+
+main.jsx: The entry point of your application, responsible for rendering the App component to the DOM.
+
+vite.config.js: A configuration file for Vite, often used to set up a proxy to prevent CORS issues with third-party APIs.
+
+package.json: The project manifest file that lists all dependencies, scripts, and other project metadata.
+
+🚀 Technologies Used
+This application is built with a set of modern and powerful technologies for a fast and efficient development experience.
+
+React: The core library for building the user interface.
+
+Vite: A next-generation build tool that provides a fast development server and an optimized build process.
+
+Axios: A popular promise-based HTTP client for making API requests.
+
+CSS (Vanilla): The application's styling and responsive design are handled with standard CSS and media queries.
+
+ESLint: A static code analysis tool that helps maintain code quality and enforces a consistent coding style.
+
+⚙️ Installation and Usage
+Follow these steps to get the application running on your local machine.
+
+Prerequisites
+Make sure you have Node.js installed.
+
+1. Clone the Repository
+Bash
+```
+git clone https://github.com/your-username/my-music-app.git
+cd my-music-app
+```
+2. Install Dependencies
+Use your preferred package manager to install the project's dependencies.
+
+Bash
+```
+npm install
+# or, if you use yarn
+# yarn install
+```
+3. Run the Application
+Once the dependencies are installed, you can start the development server.
+
+Bash
+```
+npm run dev
+```
+The application will be available at http://localhost:5173. If that port is already in use, Vite will automatically find and suggest another one.

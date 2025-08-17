@@ -1,0 +1,210 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.modal-content {
+  background-color: #181818;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.9);
+  animation: modal-appear 0.3s ease-out forwards;
+  color: #fff;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: #b3b3b3;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.modal-close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.modal-album-cover {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.modal-album-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1db954;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.modal-album-artist {
+  font-size: 1.2rem;
+  color: #b3b3b3;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.modal-controls {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.modal-control-button {
+  background-color: #282828;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-control-button:hover {
+  background-color: #3a3a3a;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.modal-control-button svg {
+  width: 32px;
+  height: 32px;
+}
+
+.modal-control-button.play-pause {
+  background-color: #1db954;
+  box-shadow: 0 5px 15px rgba(29, 185, 84, 0.5);
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+}
+
+.modal-control-button.play-pause:hover {
+  background-color: #1ed760;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(29, 185, 84, 0.6);
+}
+
+/* --- Media Queries para responsividad --- */
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-album-cover {
+    max-width: 250px;
+  }
+
+  .modal-album-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-album-artist {
+    font-size: 1rem;
+  }
+
+  .modal-controls {
+    gap: 15px;
+  }
+
+  .modal-control-button {
+    padding: 10px;
+  }
+
+  .modal-control-button svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .modal-control-button.play-pause {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .modal-album-cover {
+    max-width: 200px;
+  }
+
+  .modal-album-title {
+    font-size: 1.2rem;
+  }
+
+  .modal-album-artist {
+    font-size: 0.9rem;
+  }
+
+  .modal-controls {
+    gap: 10px;
+  }
+
+  .modal-control-button {
+    padding: 8px;
+  }
+
+  .modal-control-button svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .modal-close-button {
+    font-size: 1.5rem;
+    top: 10px;
+    right: 10px;
+  }
+
+  .modal-control-button.play-pause {
+    width: 45px;
+    height: 45px;
+  }
+}

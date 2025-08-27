@@ -1,3 +1,4 @@
+// File: src/components/AlbumModal.jsx
 import React, { useState } from 'react';
 import './AlbumModal.css';
 

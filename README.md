@@ -1,6 +1,7 @@
-📂 Project Structure
-The project structure follows a standard convention for a modern React application built with Vite, ensuring a clear and organized development workflow.
+###📂 Project Structure
 
+The project structure follows a standard convention for a modern React application built with Vite, ensuring a clear and organized development workflow.
+```
 .
 ├── src/
 │   ├── components/
@@ -17,6 +18,8 @@ The project structure follows a standard convention for a modern React applicati
 ├── package.json
 ├── vite.config.js  # Included if you have a proxy configured
 └── README.md
+```
+
 src/: This directory contains all the source code for your application.
 
 src/components/: A folder for your reusable React components. Each component has its own JSX file and a corresponding CSS file for easy maintenance.
@@ -33,7 +36,8 @@ vite.config.js: A configuration file for Vite, often used to set up a proxy to p
 
 package.json: The project manifest file that lists all dependencies, scripts, and other project metadata.
 
-🚀 Technologies Used
+###🚀 Technologies Used
+
 This application is built with a set of modern and powerful technologies for a fast and efficient development experience.
 
 React: The core library for building the user interface.
@@ -46,7 +50,8 @@ CSS (Vanilla): The application's styling and responsive design are handled with 
 
 ESLint: A static code analysis tool that helps maintain code quality and enforces a consistent coding style.
 
-⚙️ Installation and Usage
+###⚙️ Installation and Usage
+
 Follow these steps to get the application running on your local machine.
 
 Prerequisites

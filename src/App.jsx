@@ -1,4 +1,3 @@
-// File: src/App.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import AlbumCard from './components/AlbumCard';
@@ -45,9 +44,9 @@ function App() {
     const fetchAlbums = async () => {
       try {
         setLoading(true);
-        // Using the new Vercel Serverless Function as a proxy
+        // Using a direct API call for Vercel deployment
         const response = await axios.get(
-          `/api/deezer?q=${encodeURIComponent(
+          `https://api.deezer.com/search/album?q=${encodeURIComponent(
             debouncedSearchTerm
           )}`
         );
@@ -148,5 +147,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

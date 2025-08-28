@@ -108,5 +108,3 @@ function AlbumModal({ album, onClose }) {
     </div>
   );
 }
-
-export default AlbumModal;

@@ -45,7 +45,7 @@ function App() {
     const fetchAlbums = async () => {
       try {
         setLoading(true);
-        // Using the Vercel proxy to resolve CORS issues on deployment
+        // Usando el proxy de Vercel para resolver el problema de CORS
         const response = await axios.get(
           `/deezer-api/search/album?q=${encodeURIComponent(
             debouncedSearchTerm

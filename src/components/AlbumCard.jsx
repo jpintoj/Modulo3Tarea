@@ -37,3 +37,5 @@ function AlbumCard({ album, onAlbumClick }) {
     </div>
   );
 }
+
+export default AlbumCard;

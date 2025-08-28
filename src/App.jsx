@@ -1,7 +1,6 @@
-// File: src/App.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import AlbumCard from './components/AlbumCard';
+import { AlbumCard } from './components/AlbumCard';
 import AlbumModal from './components/AlbumModal';
 import './App.css';
 
@@ -148,5 +147,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

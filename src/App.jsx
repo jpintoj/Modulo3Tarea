@@ -1,3 +1,4 @@
+// File: src/App.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import AlbumCard from './components/AlbumCard';
@@ -44,15 +45,18 @@ function App() {
     const fetchAlbums = async () => {
       try {
         setLoading(true);
+        // Using the new Vercel Serverless Function as a proxy
         const response = await axios.get(
-        `/deezer-api/search/album?q=${encodeURIComponent(
-          debouncedSearchTerm
-        )}`
-      );
+          `/api/deezer?q=${encodeURIComponent(
+            debouncedSearchTerm
+          )}`
+        );
         setAlbums(response.data.data.slice(0, 20));
+        setError(null);
       } catch (err) {
         console.error("Error fetching data from Deezer API:", err);
         setError("Could not load albums. Please try again later.");
+        setAlbums([]);
       } finally {
         setLoading(false);
       }
